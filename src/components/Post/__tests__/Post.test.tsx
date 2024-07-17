@@ -1,10 +1,12 @@
-// src/components/PostComments/PostComments.test.tsx
-
+//CRIAR O ARQUIVO DE TESTE
 import { render, screen, fireEvent } from '@testing-library/react';
-import PostComments from './index';
+import Post from '../index';
 
-test('inserts comments correctly', () => {
-    render(<PostComments />);
+test('inserts two comments correctly', () => {
+    const imageUrl = 'https://via.placeholder.com/150';
+    const postText = 'This is a sample post';
+
+    render(<Post imageUrl={imageUrl}>{postText}</Post>);
 
     // Simulate adding the first comment
     fireEvent.change(screen.getByTestId('post-comments-form-textarea'), {
@@ -23,4 +25,4 @@ test('inserts comments correctly', () => {
     expect(comments).toHaveLength(2);
     expect(comments[0]).toHaveTextContent('First comment');
     expect(comments[1]).toHaveTextContent('Second comment');
-    });
+});
